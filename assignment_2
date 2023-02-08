@@ -1,0 +1,187 @@
+# Assignment on Selection in Python
+
+def find_product(num1,num2,num3):
+    product=0
+    #write your logic here
+    if(num1!=7 and num2!=7 and num3!=7):
+        product=num1*num2*num3
+    elif(num1!=7 and num2==7 and num3!=7):
+        product=num3
+    elif(num1==7 and num2!=7 and num3!=7):
+        product=num2*num3
+    elif(num1!=7 and num2!=7 and num3==7):
+        product=-1
+    else:
+        product=-1
+        
+    return product
+
+
+
+
+# Assignment on Selection in Python - Level 1 (Puzzle)
+
+def form_triangle(num1,num2,num3):
+    #Do not change the messages provided below
+    success="Triangle can be formed"
+    failure="Triangle can't be formed"
+
+    #Write your logic here
+    if(num1>=num2+num3):
+        return failure
+    elif(num2>=num1+num3):
+        return failure
+    elif(num3>=num1+num2):
+        return failure
+    else:
+        return success
+
+
+
+
+# Assignment on Selection in Python - Level 2
+def make_amount(rupees_to_make,no_of_five,no_of_one):
+    five_needed=0
+    one_needed=0
+
+    #Start writing your code here
+    #Populate the variables: five_needed and one_needed
+    total=no_of_five*5+no_of_one
+    if(total>=rupees_to_make):
+        five_needed=rupees_to_make//5
+        one_needed=rupees_to_make%5
+        if(five_needed<=no_of_five and one_needed<=no_of_one):
+            print("No. of Five needed :", five_needed)
+            print("No. of One needed  :", one_needed)
+        elif(five_needed>no_of_five and one_needed<no_of_one):
+            one_needed=rupees_to_make-no_of_five*5
+            five_needed=no_of_five
+            print("No. of Five needed :", five_needed)
+            print("No. of One needed  :", one_needed)
+        elif(no_of_five>=five_needed and no_of_one<one_needed):
+            print(-1)
+    else:
+        print(-1)
+
+
+
+# Assignment on Selection in Python - Level 3
+def calculate_bill_amount(food_type,quantity_ordered,distance_in_kms):
+    bill_amount=0
+    #write your logic here
+    if((food_type=="N" or food_type=="V")and quantity_ordered>=1 and distance_in_kms>0):
+        if(food_type=="V"):
+            if(distance_in_kms<=3):
+                bill_amount=120*quantity_ordered+0
+            elif(distance_in_kms>3 and distance_in_kms<=6):
+                bill_amount=120*quantity_ordered+((distance_in_kms-3)*3)
+            else:
+                bill_amount=120*quantity_ordered+((distance_in_kms-6)*6)+9
+        else:
+            if(distance_in_kms<=3):
+                bill_amount=150*quantity_ordered+0
+            elif(distance_in_kms>3 and distance_in_kms<=6):
+                bill_amount=150*quantity_ordered+((distance_in_kms-3)*3)
+            else:
+                bill_amount=150*quantity_ordered+((distance_in_kms-6)*6)+9
+    else:
+        bill_amount=(-1)
+    return bill_amount
+
+
+
+
+# Assignment on All Selection Types in Python - Level 3
+
+def calculate_loan(account_number,salary,account_balance,loan_type,loan_amount_expected,customer_emi_expected):
+    eligible_loan_amount=0
+    bank_emi_expected=0
+    eligible_loan_amount=0
+    #Start writing your code here
+    if(account_number>999 and account_number<2000):
+        if(account_balance>=100000):
+            if(salary>25000 and loan_type=="Car"):
+                eligible_loan_amount=500000
+                bank_emi_expected=36
+                if(customer_emi_expected<=bank_emi_expected and loan_amount_expected<=eligible_loan_amount):
+                    print("Account number:", account_number)
+                    print("The customer can avail the amount of Rs.", eligible_loan_amount)
+                    print("Eligible EMIs :", bank_emi_expected)
+                    print("Requested loan amount:", loan_amount_expected)
+                    print("Requested EMI's:",customer_emi_expected)
+                else:
+                    print("The customer is not eligible for the loan")
+            elif(salary>50000 and (loan_type=="Car" or loan_type=="House")):
+                eligible_loan_amount=6000000
+                bank_emi_expected=60
+                if(customer_emi_expected<=bank_emi_expected and loan_amount_expected<=eligible_loan_amount):
+                    print("Account number:", account_number)
+                    print("The customer can avail the amount of Rs.", eligible_loan_amount)
+                    print("Eligible EMIs :", bank_emi_expected)
+                    print("Requested loan amount:", loan_amount_expected)
+                    print("Requested EMI's:",customer_emi_expected)
+                else:
+                    print("The customer is not eligible for the loan")
+            elif(salary>75000 and (loan_type=="Car" or loan_type=="House" or loan_type=="Business")):
+                eligible_loan_amount=7500000
+                bank_emi_expected=84
+                if(customer_emi_expected<=bank_emi_expected and loan_amount_expected<=eligible_loan_amount):
+                    print("Account number:", account_number)
+                    print("The customer can avail the amount of Rs.", eligible_loan_amount)
+                    print("Eligible EMIs :", bank_emi_expected)
+                    print("Requested loan amount:", loan_amount_expected)
+                    print("Requested EMI's:",customer_emi_expected)
+                else:
+                    print("The customer is not eligible for the loan")
+            else:
+                print("Invalid loan type or salary")
+        else:
+            print("Insufficient account balance")
+    else:
+        print("Invalid account number")
+
+
+
+
+
+# Assignment on Iteration - Level 2 (Puzzle)
+
+def solve(heads,legs):
+    error_msg="No solution"
+    chicken_count=0
+    rabbit_count=0
+    
+    if(heads>=legs):
+        print(error_msg)
+    elif(legs%2!=0):
+        print(error_msg)
+    else:
+        rabbit_count=(legs-2*heads)/2
+        chicken_count=heads-rabbit_count
+        print(int(chicken_count),int(rabbit_count))
+
+
+
+# Assignment on Nested Iteration - Level 2
+
+def find_max(num1, num2):
+    list2=[]
+    max_num=-1
+    list1=list(range(num1,num2+1))
+    if num1>=num2:
+        max_num=-1
+    else:
+        for i in list1:
+            temp = i
+            temp1=0
+            while temp!=0:
+                temp1+=temp%10
+                temp=temp//10    
+            if temp1%3==0 and i%5 ==0 and len(str(i)) == 2:
+                    list2.append(i)
+        if(len(list2)!=0):
+            list2.sort()
+            max_num = list2[-1]
+        else:
+            max_num=-1
+    return max_num
