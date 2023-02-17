@@ -1,0 +1,145 @@
+#Assignment on String - Level 1 (Puzzle)
+
+def find_common_characters(msg1,msg2):
+    str=""
+    for i in msg1:
+        if i in msg2:
+            if i not in str:
+                str=str+i
+    if(str):
+        return str.replace("","")
+    else:
+        return-1
+
+
+#Assignment on String - Level 2 (Puzzle)
+
+def encrypt_sentence(sentence):
+    #start writing your code here
+    fin=""
+    lis=sentence.split()
+    for i in range(0,len(lis)):
+        temp=""
+        if i%2==0:
+            temp=lis[i]
+            fin=fin+temp[::-1]+' '
+        else:
+            temp=lis[i]
+            tem=""
+            vow=""
+            conso=""
+            for i in temp:
+                if i=='a' or i=='A' or i=='e' or i=='E' or i=='i' or i=='I' or i=='o' or i=='O' or i=='u' or i=='U':
+                    vow=vow+i
+                else:
+                    conso=conso+i
+            tem=conso+vow
+        
+            fin=fin+tem+' '
+    fin=fin.strip()
+    return fin
+
+
+# Assignment on Dictionary - Level 2
+
+def find_correct(word_dict):
+    c1,c2,c3,cou=0,0,0,0
+    for i in word_dict:
+        if(word_dict[i]==i):
+            c1=c1+1
+        elif(len(word_dict[i])!=len(i)):
+            c3=c3+1
+        else:
+            x=word_dict[i]
+            for j in range(len(x)):
+                if(x[j]!=i[j]):
+                    cou=cou+1
+            if(cou<=2):
+                c2+=1
+            else:
+                c3+=1
+            cou=0
+    list=[c1,c2,c3]
+    return list
+
+
+# Assignment on Dictionary - Level 3
+
+def max_visited_speciality(patient_medical_speciality_list,medical_speciality):
+    # write your logic here
+    p_count,o_count,e_count=0,0,0
+    for key,val in medical_speciality.items():
+        i = 1
+        for x in range(len(patient_medical_speciality_list)//2):
+            if 'P' == patient_medical_speciality_list[i]:
+                p_count += 1
+            if 'O' == patient_medical_speciality_list[i]:
+                o_count += 1
+            if 'E'==patient_medical_speciality_list[i]:
+                e_count += 1
+            i+=2
+    if p_count>o_count:
+        if p_count>e_count:
+            return medical_speciality['P']
+    if o_count>p_count:
+        if o_count>e_count:
+            return medical_speciality['O']
+    if  e_count>p_count:
+        if e_count>o_count:
+            return  medical_speciality['E']
+
+
+
+# Assignment on String - Level 3
+def sms_encoding(data):
+    data=data.split()
+    vow,data1=['a','e','i','o','u','A','E','I','O','U'],[]
+    count=0
+        
+    for word in data:
+        stt=''
+        for chr in word:
+            if chr in vow:
+                count+=1
+            else:
+                stt+=chr
+        if count == len(word) or len(word)==1:
+            data1.append(word)
+        else:
+            data1.append(stt)
+    data1=' '.join(data1)
+    return data1
+
+
+# Assignment on Dictionary - Level 3 (Puzzle)
+
+import re
+def max_frequency_word_counter(data):
+    data_dict = {}
+    word = ""
+    frequency = 0
+    data = re.sub(r",", "", data).lower()
+    while data:
+        temp = data.split()
+        for word in temp:
+            lis = re.findall(r"\b(?=\w)" + re.escape(word) + r"\b(?!\w)", data)
+            data_dict.update({word: len(lis)})
+            temp1 = re.sub(r"\b(?=\w)" + re.escape(word) + r"\b(?!\w)", "", data)
+            data = re.sub(r"  ", " ", temp1).strip()
+            break
+    maxx = 0
+    prev = ''
+    for key, value in data_dict.items():
+        if value == maxx:
+            if len(key) > len(prev):
+                maxx = value
+                word = key
+                frequency = value
+                prev = key
+        elif value > maxx:
+            maxx = value
+            word = key
+            frequency = value
+            prev = key
+    print(word, frequency)
+
